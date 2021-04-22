@@ -81,7 +81,6 @@ function getresponse() {
     }
 }
 
-
 function getVerse(book, chapter, verse) {
   var verseOutput = xmlDoc.getElementsByTagName("book")[0].getAttribute("name"); 
   var c = xmlDoc.getElementsByTagName("chapter")[chapter-1];
@@ -136,12 +135,12 @@ function getNodeString(node) {
 		else if (node.nodeName=="strongs") {
 		   if (node.childNodes[0] != null)
 			 result += node.childNodes[0].nodeValue;
-		   if (node.hasAttribute("hebrew") == true && str.value =="on"){
+		   if (node.hasAttribute("hebrew") == true && str.value =="true"){
                var strong = node.getAttribute("hebrew");
                result = result + "<a href='javascript:alert(" + strong + ")'>" + "<a href='javascript:showStrongs(" + strong + ",\"hebrew\")'>"
                    + "<i><font size=1 color=blue><sub>" + node.getAttribute("hebrew") + "</sub></font></i></a> ";
            }
-		   if (node.hasAttribute("greek") == true && str.value =="on"){
+		   if (node.hasAttribute("greek") == true && str.value =="true"){
                var strong = node.getAttribute("greek");
                result = result + "<a href='javascript:alert(" + strong + ")'>" + "<a href='javascript:showStrongs(" + strong + ",\"greek\")'>"
                    + "<i><font size=1 color=blue><sub>" + node.getAttribute("greek") + "</sub></font></i></a> ";
@@ -179,8 +178,7 @@ function getNodeString(node) {
         <TD ALIGN=LEFT VALIGN=TOP><INPUT NAME="numOfVerse" TYPE="text" MAXLENGTH=3 id=numOfVerse></TD>
     </TR>
     <TR>
-        <TD ALIGN=LEFT VALIGN=TOP><input type="radio" name="strongs" value="on">Include Strong's Lexicon</TD>
-        <TD ALIGN=LEFT VALIGN=TOP><input type="radio" name="strongs" value="off">Don't Include Strong's Lexicon</TD>
+        <TD ALIGN=LEFT VALIGN=TOP><input type="radio" name="strongs" value="true">Include Strong's Lexicon</TD>
     </TR>
 </table>
 <p>
